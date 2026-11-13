@@ -69,6 +69,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 s.doneToday > 0 -> "继续学习（还剩 ${s.remaining} 词）"
                 else -> "开始今日学习"
             }
+            val pinSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+                AppWidgetManager.getInstance(requireContext()).isRequestPinAppWidgetSupported
+            b.btnAddWidget.text = if (pinSupported) "添加" else "预览"
             b.tvTip.text = if (s.totalWords > 0) {
                 "词库共 ${s.totalWords} 词 · 按艾宾浩斯间隔自动安排复习"
             } else {
@@ -104,6 +107,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 return
             }
         }
-        android.widget.Toast.makeText(context, "请在桌面长按 → 小组件 → 拾词", android.widget.Toast.LENGTH_LONG).show()
+        // 部分模拟器 / 定制桌面没有组件选择器，用同一份布局做预览
+        startActivity(
+            Intent(context, com.shici.app.ui.widget.WidgetPreviewActivity::class.java)
+        )
     }
 }

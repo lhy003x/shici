@@ -25,6 +25,13 @@
         <item name="android:windowBackground">@color/paper</item>
     </style>
 
+    <style name="Theme.Shici.Preview" parent="Theme.Shici">
+        <item name="android:windowBackground">#0E211D</item>
+        <item name="android:statusBarColor">#0E211D</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">#091412</item>
+    </style>
+
     <style name="Widget.Shici.Button" parent="Widget.Material3.Button">
         <item name="cornerRadius">14dp</item>
         <item name="android:textAllCaps">false</item>

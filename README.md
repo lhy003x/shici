@@ -20,9 +20,28 @@
 
 技术上对应 `AppWidgetProvider` + `RemoteViews` + `PendingIntent` 广播 + `BroadcastReceiver.goAsync()` + Room。
 
+> 模拟器提示：雷电自带的 Launcher3 是删减版，没有组件选择器，`requestPinAppWidget` 也返回不支持。
+> 这种情况下首页的「添加」按钮会变成「预览」，进入 `WidgetPreviewActivity` ——
+> 它复用**同一份 `widget_word.xml` 布局**和同一套数据逻辑，点按钮同样会写回复习计划。
+> 在 Pixel 启动器 / 真机上，则是真正钉到桌面的小组件。
+
 ---
 
-## 二、功能清单
+## 二、界面
+
+| 首页 | 卡片学习 |
+| --- | --- |
+| <img src="docs/screenshots/home.png" width="280"> | <img src="docs/screenshots/study-card.png" width="280"> |
+
+| 拼写听写 | 词库 |
+| --- | --- |
+| <img src="docs/screenshots/spell.png" width="280"> | <img src="docs/screenshots/words.png" width="280"> |
+
+| 桌面小组件（Pixel 启动器实测） | 小组件预览（桌面无组件选择器时） |
+| --- | --- |
+| <img src="docs/screenshots/widget-home.png" width="280"> | <img src="docs/screenshots/widget-preview.png" width="280"> |
+
+## 三、功能清单
 
 | 类型 | 功能 |
 | --- | --- |
@@ -35,7 +54,7 @@
 
 ---
 
-## 三、复习算法
+## 四、复习算法
 
 简化版 Leitner：
 
@@ -54,7 +73,7 @@
 
 ---
 
-## 四、技术栈
+## 五、技术栈
 
 - **Kotlin** + XML View（ViewBinding）
 - **Room**：`book` / `word` / `review_log` 三张表
@@ -68,7 +87,7 @@
 
 ---
 
-## 五、运行
+## 六、运行
 
 ```bash
 # 需 JDK 17+ 与 Android SDK 34
@@ -80,7 +99,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ---
 
-## 六、目录结构
+## 七、目录结构
 
 ```
 app/src/main/java/com/shici/app/
@@ -107,13 +126,13 @@ app/src/main/java/com/shici/app/
 
 ---
 
-## 七、后续计划
+## 八、后续计划
 
 - [x] 拼写听写模式（自选功能）
 - [ ] 词库导入（CSV / JSON）
 - [ ] 小组件集合视图（`RemoteViewsService`，桌面可滚动刷词）
 - [ ] 打卡日历热力图
 
-## 八、词库来源
+## 九、词库来源
 
 内置词条为课程演示用示例数据，释义参考通用词典整理，例句为自写例句。

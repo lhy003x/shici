@@ -35,6 +35,12 @@
             android:theme="@style/Theme.Shici.Study"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".ui.widget.WidgetPreviewActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.Shici.Preview" />
+
         <receiver
             android:name=".widget.WordWidgetProvider"
             android:exported="true">
